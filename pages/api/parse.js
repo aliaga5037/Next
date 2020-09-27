@@ -37,5 +37,7 @@ export default async (req, res) => {
         }
     }
 
+    var xls = json2xls(obj);
+    fs.writeFileSync('data.xlsx', xls, 'binary');
     res.status(200).json(obj);
 }
