@@ -10,7 +10,7 @@ export default function Home() {
     const box = html.querySelectorAll('.box')[2].childNodes;
 
     var obj = [];
-
+    var startTime;
     box.forEach(async (element, index) => {
       var kefs = {}
       var rowAttrs = element.rawAttrs
@@ -23,12 +23,19 @@ export default function Home() {
           var { imo_gol_01, imo_gol_23, imo_gol_46, imo_gol_7 } = cf.data.bets;
           kefs = { liga, teams, imo_gol_01, imo_gol_23, imo_gol_46, imo_gol_7, index };
           obj.push(kefs);
-          
+
         } else {
           var time = element.querySelector('h5');
-          time ? kefs = {startTime: time.innerText, index} : null;
-          
-          obj.push(kefs);
+          if (time) {
+            if (startTime) {
+              obj.map(o => {
+                o.startTime ? o.startTime = time.innerText : null;
+              })
+            }
+            startTime = time.innerText;
+          };
+
+
         }
       }
     })
@@ -36,14 +43,15 @@ export default function Home() {
     console.log('done')
   }
 
-  function getResult(){
-    console.log(window.obj.sort((a,b) => (a.index > b.index) ? 1 : ((b.index > a.index) ? -1 : 0)))
+  function getResult() {
+    const sorted = window.obj.sort((a, b) => (a.index > b.index) ? 1 : ((b.index > a.index) ? -1 : 0));
+    console.log(sorted)
   }
 
   return (
     <div>
       <button onClick={getContent}>Get Content</button>
-      <br/>
+      <br />
       <button onClick={getResult}>Get Results</button>
     </div>
   )
