@@ -40,6 +40,11 @@ export default async (req, res) => {
         }
     }
 
+    for (const o of obj) {
+        if (startTime && !o.startTime)
+            o.startTime = startTime
+    }
+
     var xls = json2xls(obj);
     fs.writeFileSync('data.xlsx', xls, 'binary');
     res.status(200).json(obj);
