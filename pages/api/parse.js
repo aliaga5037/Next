@@ -1,5 +1,8 @@
 import { parse } from 'node-html-parser';
 import axios from 'axios';
+import fs from 'fs';
+import json2xls from 'json2xls';
+
 export default async (req, res) => {
     const response = await axios.get('https://m.sporx.com/iddaa/?utm_source=M_Sporx&utm_medium=iddaa&utm_content=daily&utm_campaign=hizlierisim_tepe');
     var html = parse(response.data);
