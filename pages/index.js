@@ -6,7 +6,11 @@ export default function Home() {
   return (
     <div>
       <Link href="/api/parse">
-        <a>Start Parsing</a>
+        <a>Start Parsing m.sporx.com</a>
+      </Link>
+      <br />
+      <Link href="/api/parse2">
+        <a>Start Parsing www.mackolik.com</a>
       </Link>
       <br />
       <Link href="/api/download">

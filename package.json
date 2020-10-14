@@ -12,6 +12,8 @@
     "express": "^4.17.1",
     "fetch": "^1.1.0",
     "fs": "^0.0.1-security",
+    "jquery": "^3.5.1",
+    "jsdom": "^16.4.0",
     "json-to-excel": "^1.0.1",
     "json2xls": "^0.1.2",
     "next": "latest",
