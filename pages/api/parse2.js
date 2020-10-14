@@ -10,6 +10,8 @@ export default async (req, res) => {
     var year = req.query.year || date[2];
 
     const response = await axios.get(`https://www.mackolik.com/ajax/iddaa/events/soccer?byKickOffTime=true&competitionId=&selectedDate=${day + '.' + month + '.' + year}&eventUrlPrefixType=iddaaPage&eventUrlSuffixType=iddaaPage`);
+    console.log({response})
+    if(!response.data) return
     var html = parse(response.data.data.html);
     const element = html.querySelectorAll('.widget-iddaa-events__row--markets-summary');
     const arr = [];
@@ -23,7 +25,7 @@ export default async (req, res) => {
         var id = box.querySelector('.widget-iddaa-events__expander').getAttribute('data-iddaa-code');
         var time = box.getAttribute('data-utc');
         var startTime = new Date(parseInt(time)).toLocaleString();
-        var liga = box.querySelector('.widget-iddaa-events__competition-short').getAttribute('title').trim();
+        var liga = box.querySelector('.widget-iddaa-events__competition-short').innerText.trim();
         var home = box.querySelector('.widget-iddaa-events__team-name--home').innerText;
         var away = box.querySelector('.widget-iddaa-events__team-name--away').innerText;
 
