@@ -4,12 +4,12 @@ import fs from 'fs';
 import json2xls from 'json2xls';
 
 export default async (req, res) => {
-    var date = new Date().toLocaleDateString().split('.');
-    var day = req.query.day || date[0];
-    var month = req.query.month || date[1];
-    var year = req.query.year || date[2];
+    // var date = new Date().toLocaleDateString().split('.');
+    // var day = req.query.day || date[0];
+    // var month = req.query.month || date[1];
+    // var year = req.query.year || date[2];
 
-    const response = await axios.get(`https://www.mackolik.com/ajax/iddaa/events/soccer?byKickOffTime=true&competitionId=&selectedDate=${day + '.' + month + '.' + year}&eventUrlPrefixType=iddaaPage&eventUrlSuffixType=iddaaPage`);
+    const response = await axios.get(`https://www.mackolik.com/iddaa`);
     console.log({response})
     if(!response.data) return
     var html = parse(response.data.data.html);
