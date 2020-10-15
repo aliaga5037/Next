@@ -19,8 +19,8 @@ export default async (req, res) => {
         return axios.get(url)
     }
     for (let box of element) {
-
         var id = box.querySelector('.widget-iddaa-events__expander').getAttribute('data-iddaa-code');
+        console.log({id})
         var time = box.getAttribute('data-utc');
         var startTime = new Date(parseInt(time)).toLocaleString();
         var liga = box.querySelector('.widget-iddaa-events__competition-short').innerText.trim();
@@ -54,11 +54,11 @@ export default async (req, res) => {
                             default:
                                 break;
                         }
+                        arr.push(obj)
                     }
                 }
             }
         }
-        arr.push(obj)
     }
 
     var xls = json2xls(arr);
