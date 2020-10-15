@@ -9,10 +9,10 @@ export default async (req, res) => {
     var month = req.query.month || date[1];
     var year = req.query.year || date[2];
 
-    const response = await axios.get(`https://www.mackolik.com/ajax/iddaa/events/soccer?byKickOffTime=true&competitionId=&selectedDate=${day + '.' + month + '.' + year}&eventUrlPrefixType=iddaaPage&eventUrlSuffixType=iddaaPage`);
+    const response = await axios.get(`https://www.mackolik.com/iddaa`);
     console.log({response})
     if(!response.data) return
-    var html = parse(response.data.data.html);
+    var html = parse(response.data);
     const element = html.querySelectorAll('.widget-iddaa-events__row--markets-summary');
     const arr = [];
 
