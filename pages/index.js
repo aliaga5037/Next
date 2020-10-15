@@ -12,6 +12,9 @@ export default function Home() {
       <Link href="/api/parse2">
         <a>Start Parsing www.mackolik.com</a>
       </Link>
+      <Link href="/api/parse3">
+        <a>Start Parsing https://www.sahadan.com/</a>
+      </Link>
       <br />
       <Link href="/api/download">
         <a>Download last report</a>

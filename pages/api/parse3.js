@@ -9,15 +9,13 @@ export default async (req, res) => {
     var month = req.query.month || date[1];
     var year = req.query.year || date[2];
 
-    const response = await axios.get(`https://www.mackolik.com/ajax/iddaa/events/soccer?byKickOffTime=true&competitionId=&selectedDate=${day + '.' + month + '.' + year}&eventUrlPrefixType=iddaaPage&eventUrlSuffixType=iddaaPage`);
-    console.log({response})
-    if(!response.data) return
-    var html = parse(response.data.data.html);
+    const response = await axios.get(`https://www.sahadan.com/iddaa`);
+    var html = parse(response.data);
     const element = html.querySelectorAll('.widget-iddaa-events__row--markets-summary');
     const arr = [];
 
     function getDetails(id) {
-        const url = `https://www.mackolik.com/ajax/iddaa/markets/soccer/all/9fd6jaj6t532q3jnhv2tlxl62?template=all&iddaaCode=${parseInt(id)}&eventUrlPrefixType=iddaaPage&eventUrlSuffixType=iddaaPage&googleAnalyticsAction=IddaaOddsClick&googleAnalyticsCategory=IddaaOddsClick&googleAnalyticsLabel=Iddaa+Page+Odds+Click`
+        const url = `https://www.sahadan.com/ajax/iddaa/markets/soccer/all/8rylyjaz6c2woum7jn9zayhd6?template=all&iddaaCode=${parseInt(id)}&eventUrlPrefixType=iddaaPage&eventUrlSuffixType=iddaaPage&googleAnalyticsAction=IddaaOddsClick&googleAnalyticsCategory=IddaaOddsClick&googleAnalyticsLabel=Iddaa+Page+Odds+Click`
         return axios.get(url)
     }
     for (let box of element) {
