@@ -30,11 +30,11 @@ export default async (req, res) => {
         var obj = { liga, startTime, teams: `${home} ${away}` };
         const cf = await getDetails(id);
         const table = parse(cf.data.data.html).childNodes[0].childNodes;
-        for (const element of table) {
+        for (let element of table) {
             if (element.rawAttrs && element.rawAttrs.split('data-market=').indexOf('"football-tot-goal" ') != -1) {
 
                 let list = element.querySelector('.widget-iddaa-markets__option-list').childNodes;
-                for (const listItem of list) {
+                for (let listItem of list) {
                     if (listItem.childNodes.length) {
                         let label = listItem.childNodes[1].querySelector('.widget-iddaa-markets__label').innerText.trim()
                         let val = listItem.childNodes[1].querySelector('.widget-iddaa-markets__value').innerText.trim()
