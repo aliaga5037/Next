@@ -17,6 +17,10 @@ export default function Home() {
         <a>Start Parsing https://www.sahadan.com/</a>
       </Link>
       <br />
+      <Link href="/api/parse5">
+        <a>Start Parsing https://iddaakulubu.com/</a>
+      </Link>
+      <br />
       <Link href="/api/download">
         <a>Download last report</a>
       </Link>
