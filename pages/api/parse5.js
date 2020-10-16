@@ -61,7 +61,7 @@ export default async (req, res) => {
 
             if (lastPush) arr.pop();
 
-            arr.push({ date })
+            arr.push({ liga: '', startTime: date, teams: '', "0-1 gol": '',"2-3 gol": '',"4-5 gol": '',"6+ gol": ''  })
             lastPush = true
 
         }
