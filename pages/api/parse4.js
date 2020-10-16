@@ -3,7 +3,7 @@ import axios from 'axios';
 import fs from 'fs';
 import json2xls from 'json2xls';
 
-export default async (req, res) => {
+export default async (req, resp) => {
 
     const response = await axios.get(`https://apivx.misli.com/api/web/v1/sportsbook/event/0?sportType=SOCCER&betType=LIVE`);
 
@@ -48,5 +48,5 @@ export default async (req, res) => {
     arr.push(details);
     // var xls = json2xls(arr);
     // fs.writeFileSync('data.xlsx', xls, 'binary');
-    res.status(200).json(arr);
+    resp.status(200).json(arr);
 }
